@@ -113,5 +113,4 @@ class Produtos extends ResourceController
             return $this->failNotFound($e->getMessage());
         }
     }
-
 }
