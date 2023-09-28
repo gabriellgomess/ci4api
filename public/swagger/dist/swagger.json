@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost",
+            "url": "http://localhost/ci4api/public",
             "description": "Servidor Local"
         }
     ],
@@ -36,10 +36,21 @@
                 "summary": "Cadastrar Produto",
                 "description": "Cadastrar Produto",
                 "operationId": "cadastrarProduto",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Token de autenticação necessário para acessar este endpoint"
+                    }
+                ],
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "$ref": "#/components/schemas/NewProduto"
                             }
@@ -77,6 +88,15 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Token de autenticação necessário para acessar este endpoint"
                     }
                 ],
                 "responses": {
@@ -108,6 +128,15 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Token de autenticação necessário para acessar este endpoint"
                     }
                 ],
                 "requestBody": {
@@ -149,8 +178,17 @@
                         "schema": {
                             "type": "integer"
                         }
+                    },
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Token de autenticação necessário para acessar este endpoint"
                     }
-                ],
+                ],                
                 "responses": {
                     "200": {
                         "description": "Produto deletado com sucesso"
@@ -204,12 +242,15 @@
                     }
                 }
             },
-            "Produtos": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/Produto"
+            "deletarProduto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    }
                 }
-            }
+            },
+           
         }
     }
 }

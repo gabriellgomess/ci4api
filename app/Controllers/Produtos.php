@@ -17,9 +17,13 @@ class Produtos extends ResourceController
     }
 
     private function _validaToken()
-    {
-        return $this->request->getHeaderLine('token') === $this->token;
-    }
+{
+    // Log temporário para debugging
+    error_log('Token Recebido: ' . $this->request->getHeaderLine('token'));
+
+    return $this->request->getHeaderLine('token') === $this->token;
+}
+
 
     public function index()
     {
